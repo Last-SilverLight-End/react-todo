@@ -4,7 +4,7 @@ import { useState } from 'react';
 function Form({ onAddTodo }) {
   const [todo, setTodo] = useState('');
 
-  const handleAddTodo = () => {
+  const AddTodo = () => {
     if (todo === '') {
       return;
     }
@@ -12,7 +12,8 @@ function Form({ onAddTodo }) {
     setTodo('');
   };
 
-  const handleChange = e => {
+  const inputChange = e => {
+    e.preventDefault();
     setTodo(e.target.value);
   };
 
@@ -21,10 +22,10 @@ function Form({ onAddTodo }) {
       <input
         type="text"
         value={todo}
-        onChange={handleChange}
+        onChange={inputChange}
         placeholder="할 일을 입력해주세요"
       />
-      <button type="button" onClick={handleAddTodo}>
+      <button type="button" onClick={AddTodo}>
         추가
       </button>
     </div>
