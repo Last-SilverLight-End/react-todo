@@ -1,12 +1,23 @@
 import PropTypes from 'prop-types';
 
 function Item({ id, todo, isCompleted, onDeleteTodo, onCompleteTodo }) {
+  const handleOnCompleteTodo = e => {
+    const handleCheck = e.target.checked;
+    onCompleteTodo(id, handleCheck);
+  };
+
   return (
     <li>
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        checked={isCompleted}
+        onChange={() => handleOnCompleteTodo}
+      />
       <p>{todo}</p>
       <div>
-        <button type="button">삭제</button>
+        <button type="button" onClick={() => onDeleteTodo(id)}>
+          삭제
+        </button>
       </div>
     </li>
   );
